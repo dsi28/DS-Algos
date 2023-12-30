@@ -1,0 +1,40 @@
+# Rotate Matrix/ Image - LeetCode 48
+# You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+# You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
+# DO NOT allocate another 2D matrix and do the rotation.
+# Example:
+#     Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+#     Output: [[7,4,1],[8,5,2],[9,6,3]]
+
+
+# Rotation	Description                             Steps
+# 90° CW      Rotate 90 degrees clockwise             Transpose, then reverse rows
+# 90° CCW     Rotate 90 degrees counterclockwise      Transpose, then reverse columns
+# 180°        Rotate 180 degrees                      Reverse rows, then reverse columns
+# 270° CW     Rotate 270 degrees clockwise            Transpose, then reverse columns
+# 270° CCW    Rotate 270 degrees counterclockwise     Transpose, then reverse rows
+
+def rotate(matrix):
+    n = len(matrix)
+    print(matrix, ' before')
+    # Transpose the matrix
+    for i in range(n):  # Iterate over the rows
+        for j in range(i, n):  # Iterate over the columns starting from the current row 'i'
+            # Swap the elements at positions (i, j) and (j, i)
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    print(matrix, ' after transpose')    
+    # Reverse each row
+    for row in matrix:  # Iterate over each row in the matrix
+        row.reverse()  # Reverse the elements in the current row
+    print(matrix, ' done')
+
+rotate([[1,2,3],[4,5,6],[7,8,9]])
+
+
+
+#  code for reversing columns:
+    # Iterate over each column and reverse its elements in place
+    # for j in range(num_cols): # iterate over rows
+    #     for i in range(num_rows // 2): # iterate over columns using integer division to make sure you only go half way
+    #         # Swap elements symmetrically across the center
+    #         matrix[i][j], matrix[num_rows - 1 - i][j] = matrix[num_rows - 1 - i][j], matrix[i][j]
