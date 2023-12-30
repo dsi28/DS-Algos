@@ -14,6 +14,9 @@
 # 270° CW     Rotate 270 degrees clockwise            Transpose, then reverse columns
 # 270° CCW    Rotate 270 degrees counterclockwise     Transpose, then reverse rows
 
+
+# tc: O(n^2)
+# sc: O(1)
 def rotate(matrix):
     n = len(matrix)
     print(matrix, ' before')
