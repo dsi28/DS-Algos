@@ -28,6 +28,16 @@ class LinkedList:
         self.head = new_node
         self.tail = new_node
         self.length = 1
+    
+    def __str__(self):
+        temp_node = self.head
+        result = ''
+        while temp_node is not None:
+            result += str(temp_node.value)
+            if temp_node.next is not None:
+                result += ' -> '
+            temp_node = temp_node.next
+        return result
 
     # Write a function to insert a new element at the beginning of a singly linked list.
         # TC: O(1)
@@ -55,7 +65,9 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
 
-
+    # remove node at a given index
+        # TC: O(N)
+        # SC: O(1) 
     def remove(self, t_index):
         if t_index > self.length or t_index < 0 or self.head == None:
             return None
@@ -88,6 +100,65 @@ class LinkedList:
             self.length -= 1
             return temp
 
+    # Write a function to reverse a singly linked list. 
+    # The function should reverse the original linked list. 
+        # TC: O(n)
+        # SC: O(1) 
+    def reverse(self):
+        cur_node = self.head
+        while cur_node != self.tail:
+            next_node = cur_node.next
+            if next_node == self.tail:
+                cur_node.next = None
+                self.tail = cur_node
+            else:
+                cur_node.next = next_node.next
+            next_node.next = self.head
+            self.head = next_node
 
+    # Write a function to find and return the middle node of a singly linked list. 
+    # If the list has an even number of nodes, return the second of the two middle nodes. 
+        # tc: O(n)
+        # sc: O(1)
+    def find_middle(self):
+        cur_node = self.head
+        for _ in range(self.length // 2):
+            cur_node = cur_node.next
+        return cur_node
+
+    #Remove Duplicates from a Singly Linked List
+    #Given a singly linked list, write a function that removes all the duplicates. 
+    # use this linked list .
+    #Original Linked List - "1 -> 2 -> 4-> 3 -> 4->2"
+    #Result Linked List - "1 -> 2 -> 4 -> 3
+        #tc: O(n^2)
+        # sc: O(1) 
+    def remove_duplicates(self):
+        track_list = []
+        curr_node = self.head
+        prev_node = curr_node
+        track_list.append(curr_node)
+        while curr_node != None:
+            print(curr_node.value)
+            if curr_node.value in track_list:
+                print('?', curr_node.value)
+                prev_node.next = curr_node.next
+                curr_node.next = None
+                curr_node = prev_node
+                self.length -= 1
+            else:
+                track_list.append(curr_node.value)
+            prev_node = curr_node
+            curr_node = curr_node.next
+
+test_1 = LinkedList(1)
+test_1.append(2)
+test_1.append(4)
+test_1.append(3)
+test_1.append(4)
+test_1.append(2)
+
+test_1.remove_duplicates()
+print(test_1)
 
 
