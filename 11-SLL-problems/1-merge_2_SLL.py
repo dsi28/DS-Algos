@@ -53,3 +53,25 @@ class Solution(object):
             else:
                 l1 = l1.next
         return head_1
+    def improved_mergeTwoLists(self, l1, l2):
+        """
+        :type list1: Optional[ListNode]
+        :type list2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        return_head = ListNode(-1)
+        prev = return_head
+
+        while l1 != None and l2 != None:
+            if l1.val <= l2.val:
+                prev.next = l1
+                l1 = l1.next
+            else:
+                prev.next = l2
+                l2 = l2.next
+            prev = prev.next
+        
+        if l1 == None:
+            prev.next = l2
+        else:
+            prev.next = l1
