@@ -51,9 +51,9 @@ class LinkedList:
             self.add(randint(min_val,max_val))
         return self
     
-test_LL = LinkedList()
-test_LL.generate(12,2,77)
-print(test_LL)
-print(len(test_LL))
+# test_LL = LinkedList()
+# test_LL.generate(12,2,77)
+# print(test_LL)
+# print(len(test_LL))
 
         
