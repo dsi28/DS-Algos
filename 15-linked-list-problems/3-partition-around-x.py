@@ -1,5 +1,8 @@
 from linkedList import LinkedList, Node
 
+
+# tc: O(N)
+# sc: O(1)
 def seperate(ll, x):
     temp_x = Node(value=x)
     temp_x.next = ll.head
