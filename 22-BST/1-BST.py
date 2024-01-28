@@ -53,7 +53,7 @@ def inOrderTraversal(root_node):
     print(root_node.data)  
     inOrderTraversal(root_node.rightChild)  
 
-# in orderTraversal: (left,right,root)
+# post orderTraversal: (left,right,root)
     # tc: O(n)
     # sc: O(n)
 def postOrderTraversal(root_node):
@@ -150,6 +150,6 @@ print('...........\nSearch')
 result = searchValue(bst_node, 100)
 print(result)
 print('...........\nDelete')
-deleteBSTNode(bst_node, 70)
-print(result)
+result = deleteBSTNode(bst_node, 30)
+print('result: ',result.data)
 levelOrderTraversal(bst_node)
