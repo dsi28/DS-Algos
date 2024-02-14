@@ -1,4 +1,12 @@
 # implement insertion sort
+    # 9,8,7,6,5,4
+    # key=8, i=1
+    # 9,9,7,6,5,4
+    # 8,9,7,6,5,4
+    # key=7,i=2
+    # 8,9,9,6,5,4
+    # 8,8,9,6,5,4
+    # 7,8,9,6,5,4
 
 def insertionSort(some_list):
     list_len = len(some_list)
