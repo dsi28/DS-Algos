@@ -1,29 +1,31 @@
+# implement quick sort.
+
+def quickSort(some_list, left, right):
+    if left < right:
+        # call pivot
+        pivot_index = pivot(some_list, left, right)
+
+        # call quick sort recursively for both sides around pivot. since pivot is sorted
+        quickSort(some_list,left, pivot_index-1)
+        quickSort(some_list,pivot_index+1,right)
+
+
 
 def pivot(some_list, pivot_index, end_index):
-    # set swap index
     swap_index = pivot_index
-    for i in range(pivot_index + 1, end_index + 1):
-        # if cur element is less than pivot
+    # do not include pivot index and include end_index
+    for i in range(pivot_index+1, end_index+1):
         if some_list[i] < some_list[pivot_index]:
-            # increment swap. swap is the last lesser element than the pivot or the pivot
+            # increase swap index so swap index is set to the first element greater than pivot
             swap_index += 1
-            # swap cur element with pivot.next (which is greater than pivot)
-            some_list[i], some_list[swap_index] = some_list[swap_index], some_list[i]
+            # swap current with new swap index
+            some_list[i],some_list[swap_index] = some_list[swap_index],some_list[i]
+    # place pivot in correct place so its sorted. swap pivot with last item lesser than pivot
     some_list[pivot_index],some_list[swap_index] = some_list[swap_index],some_list[pivot_index]
     return swap_index
 
 
-def quickSort(some_list, left, right):
-    if left < right:
-        pivot_index = pivot(some_list, left, right)
-        quickSort(some_list, left, pivot_index-1)
-        quickSort(some_list, pivot_index+1, right)
-    return some_list
 
-some_list = [9,8,2,10,3,4,5,7,1,6]
-pivot(some_list, 0, len(some_list) - 1)
-print(some_list)
-
-some_list = [9,8,2,10,3,4,5,7,1,6]
-quickSort(some_list, 0, len(some_list)-1)
-print(some_list)
+test = [10,111,12,8,3,1,2,14]
+quickSort(test, 0, len(test)-1)
+print(test)

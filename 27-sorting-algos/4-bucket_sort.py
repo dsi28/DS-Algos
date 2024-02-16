@@ -3,6 +3,7 @@ import math
 
 def bucketSort(some_list):
     list_len = len(some_list)
+    list_len = round(math.sqrt(list_len))
     buckets = []
     # create empty list of buckets
     for _ in some_list:
